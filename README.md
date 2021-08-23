@@ -221,4 +221,72 @@ GROUP BY country_id
 ```
 ---
 
+## ÖDEV 8
+
+1. test veritabanınızda employee isimli sütun bilgileri id(INTEGER), name VARCHAR(50), birthday DATE, email VARCHAR(100) olan bir tablo oluşturalım.
+
+```sql
+CREATE TABLE employee (
+	id INT PRIMARY KEY,
+	name VARCHAR(50) NOT NULL,
+	birthday DATE,
+	email VARCHAR(100) NOT NULL
+);
+```
+
+2. Oluşturduğumuz employee tablosuna 'Mockaroo' servisini kullanarak 50 adet veri ekleyelim
+
+mockaroo.com sitesine giriyoruz. Kenditablomuza göre ayarlıyoruz ve DOWNLOAD DATA butonuna basıyoruz.
+İndirilen dosyadaki textleri çalıştırıp verilerimizi ekliyoruz.
+
+```sql
+insert into employee (id, name, email, birthday) values (1, 'Frederick', 'fbaszniak0@myspace.com', '2010-06-11');
+insert into employee (id, name, email, birthday) values (2, 'Tonia', 'tpedrick1@webnode.com', '2000-12-30');
+insert into employee (id, name, email, birthday) values (3, 'Gerry', 'gkamiyama2@digg.com', '2013-12-29');
+insert into employee (id, name, email, birthday) values (4, 'Alyce', 'agreenway3@uiuc.edu', '2016-12-21');
+```
+
+3. Sütunların her birine göre diğer sütunları güncelleyecek 5 adet UPDATE işlemi yapalım
+
+```sql
+UPDATE employee
+SET name = 'Ali'
+WHERE id = 1
+------------------------------
+UPDATE employee
+SET email = 'tonia@tonia.com'
+WHERE name = 'Tonia'
+------------------------------
+UPDATE employee
+SET name = 'Mehmet'
+WHERE birthday = '2000-08-30'
+------------------------------
+UPDATE employee
+SET birthday = '1999-10-29'
+WHERE email LIKE 'ag%'
+------------------------------
+UPDATE employee
+SET email = 'test@gmail.com'
+WHERE id = 7
+```
+
+4. Sütunların her birine göre ilgili satırı silecek 5 adet DELETE işlemi yapalım.
+
+```sql
+DELETE FROM employee
+WHERE id = 5
+------------------------------
+DELETE FROM employee
+WHERE name = 'Gerry'
+------------------------------
+DELETE FROM employee
+WHERE email = 'test@gmail.com'
+------------------------------
+DELETE FROM employee
+WHERE birthday = '2011-07-25'
+------------------------------
+DELETE FROM employee
+WHERE birthday > '2000-01-01'
+```
+---
 
